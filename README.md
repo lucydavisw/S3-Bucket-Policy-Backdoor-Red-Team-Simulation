@@ -93,7 +93,6 @@ The following is a compact, paraphrased version of the observed allow statement 
 
 This policy would permit cross-account listing and object reads, enabling exfiltration if the external principal is accessible. 
 
-S3 Bucket Policy Backdoor Disc…
 
 Detection Guidance (Blue Team)
 
@@ -133,17 +132,16 @@ Revert and validate cleanup before ending the engagement.
 
 Coordinate with stakeholders and include a post-exercise debrief to improve detection rules.
 
-Findings from This Simulation
+# Findings from This Simulation
 
 A bucket policy can be used as a stealthy exfiltration mechanism that bypasses credential rotation if the attacker controls the external principal. 
 
-S3 Bucket Policy Backdoor Disc…
 
 The Stratus Red Team harness made it straightforward to replicate the end-to-end scenario including warmup, detonation, verification, and cleanup. 
 
-S3 Bucket Policy Backdoor Disc…
 
-Ethics and Legal Notice
+
+# Ethics and Legal Notice
 
 This repository documents techniques for authorized Red Team engagements and defensive training. Misuse on systems without explicit permission is illegal. Do not run these techniques on production systems or third-party accounts without written authorization.
 
