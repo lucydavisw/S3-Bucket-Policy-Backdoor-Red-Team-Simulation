@@ -1,25 +1,24 @@
 # S3-Bucket-Policy-Backdoor-Red-Team-Simulation
 
-Author: Lucy Njuguna
+# Author: Lucy Njuguna
 
-Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
+# Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
 
-Purpose: Demonstrate a realistic red team technique where a malicious actor introduces a cross-account S3 bucket policy backdoor, validate that it is functional, and revert to baseline.
+# Purpose: Demonstrate a realistic red team technique where a malicious actor introduces a cross-account S3 bucket policy backdoor, validate that it is functional, and revert to baseline.
 
-TL;DR
+# TL;DR
 
 This repository documents a safe, sandboxed Red Team exercise that shows how a bucket policy can be modified to grant an external principal s3:ListBucket and s3:GetObject permissions. The simulation proves the change is effective for exfiltration and demonstrates cleanup to restore baseline. The exercise trains red teamers on realistic tactics and blue teamers on detection and response. 
 
-S3 Bucket Policy Backdoor Disc…
+# S3 Bucket Policy Backdoor Disc
 
-Why this matters for Red Teams
+# Why this matters for Red Teams
 
 Red teams need repeatable, realistic scenarios that model how attackers gain persistent or stealthy exfiltration access. Modifying bucket policies is an attractive adversary tradecraft because it does not require long-lived credentials and can bypass rotated keys. This simulation teaches how to safely introduce and validate such a backdoor, how to document attack steps, and how to leave the environment clean for repeat testing. 
 
-S3 Bucket Policy Backdoor Disc…
 
-Contents
-S3-Bucket-Policy-Backdoor/
+# Contents
+# S3-Bucket-Policy-Backdoor/
 ├── README.md
 ├── S3 Bucket Policy Backdoor Discussion Logeport.pdf
 └── screenshots/
@@ -28,52 +27,49 @@ S3-Bucket-Policy-Backdoor/
     ├── verification_result.png
     └── cleanup_confirmation.png
 
-Scope and Rules of Engagement
+# Scope and Rules of Engagement
 
 This is a controlled simulation run in a Stratus Red Team sandbox. No production or third-party resources were targeted. All actions were confined to an isolated test environment and reverted during cleanup. Unauthorized reproduction of these techniques against systems you do not own or have permission to test is illegal and unethical. 
 
-S3 Bucket Policy Backdoor Disc…
 
-Exercise Overview (Red Team Playbook)
-1. Recon & Baseline
+
+# Exercise Overview (Red Team Playbook)
+# 1. Recon & Baseline
 
 Establish the bucket baseline and verify policy absence or current policy state before any changes. Example command used in the sandbox:
 
-aws s3api get-bucket-policy --bucket stratus-red-team-bdbp-zkqgfovijw
+# aws s3api get-bucket-policy --bucket stratus-red-team-bdbp-zkqgfovijw
 
 
 In the simulation the command returned NoSuchBucketPolicy, confirming a clean baseline. 
 
-S3 Bucket Policy Backdoor Disc…
 
-2. Detonate (Introduce the Backdoor)
+# 2. Detonate (Introduce the Backdoor)
 
 Use the Red Team harness to apply a backdoor-style bucket policy that allows an external AWS principal cross-account read/list access:
 
-stratus detonate aws.exfiltration.s3-backdoor-bucket-policy
+# stratus detonate aws.exfiltration.s3-backdoor-bucket-policy
 
 
-Verification returned a policy with Allow for s3:GetObject, s3:ListBucket, and s3:GetBucketLocation against the bucket ARNs. 
+# Verification returned a policy with Allow for s3:GetObject, s3:ListBucket, and s3:GetBucketLocation against the bucket ARNs. 
 
-S3 Bucket Policy Backdoor Disc…
 
-3. Functional Probe (Validate Access)
+# 3. Functional Probe (Validate Access)
 
 Simulate the external principal or use the test harness to confirm the policy permits listing and reading objects:
 
 status aws.exfiltration.s3-backdoor
-# or use a simulated principal to attempt aws s3 ls / aws s3 cp
+or use a simulated principal to attempt aws s3 ls / aws s3 cp
 
 
 The policy string contained indicators like BackdoorReadAccess, and the permitted actions were confirmed. 
 
-S3 Bucket Policy Backdoor Disc…
 
-4. Persistence Considerations (Red Team Thought)
+# 4. Persistence Considerations (Red Team Thought)
 
 If an adversary wanted persistent access they might create or use an external principal they control. In this simulation, the principal was synthetic and ephemeral, mirroring an attacker who might re-use cross-account principals or IAM roles.
 
-5. Cleanup (Leave No Trace)
+# 5. Cleanup (Leave No Trace)
 
 Always revert changes and clean resources after the exercise:
 
@@ -83,9 +79,9 @@ stratus cleanup
 
 Reversion removed the policy and restored the bucket baseline in the sandbox. 
 
-S3 Bucket Policy Backdoor Disc…
 
-Example (Paraphrased) Policy Observed
+
+# Example (Paraphrased) Policy Observed
 
 The following is a compact, paraphrased version of the observed allow statement (for documentation; the real JSON is in the discussion log):
 
