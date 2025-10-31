@@ -94,7 +94,7 @@ The following is a compact, paraphrased version of the observed allow statement 
 This policy would permit cross-account listing and object reads, enabling exfiltration if the external principal is accessible. 
 
 
-Detection Guidance (Blue Team)
+# Detection Guidance (Blue Team)
 
 To detect or limit this technique in real environments, implement the following monitoring and controls:
 
@@ -108,7 +108,7 @@ S3 Access Analyzer & IAM Access Advisor. Use these to flag potentially risky res
 
 Data exfil metrics. Alert on unusual GetObject or large-volume ListBucket operations especially from new principals or endpoints.
 
-Red Team Variations & Exercises
+# Red Team Variations & Exercises
 
 Use the following variations for deeper red-team training:
 
@@ -120,7 +120,7 @@ Test detection tuning by introducing small-volume reads to see if alerts trigger
 
 Try privilege escalation detection when both resource-based and identity-based permissions are modified.
 
-Recommendations for Safe Practice
+# Recommendations for Safe Practice
 
 When you run similar exercises, follow these rules:
 
