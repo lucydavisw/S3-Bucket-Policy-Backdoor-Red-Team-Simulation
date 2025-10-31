@@ -1,8 +1,8 @@
 # S3-Bucket-Policy-Backdoor-Red-Team-Simulation
 
-#Author: Lucy Njuguna
+Author: Lucy Njuguna
 
-#Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
+Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
 
 #Purpose: Demonstrate a realistic red team technique where a malicious actor introduces a cross-account S3 bucket policy backdoor, validate that it is functional, and revert to baseline.
 
@@ -10,9 +10,7 @@
 
 This repository documents a safe, sandboxed Red Team exercise that shows how a bucket policy can be modified to grant an external principal s3:ListBucket and s3:GetObject permissions. The simulation proves the change is effective for exfiltration and demonstrates cleanup to restore baseline. The exercise trains red teamers on realistic tactics and blue teamers on detection and response. 
 
-# S3 Bucket Policy Backdoor Disc
-
-# Why this matters for Red Teams
+# S3 Bucket Policy Backdoor Disc; Why this matters for Red Teams
 
 Red teams need repeatable, realistic scenarios that model how attackers gain persistent or stealthy exfiltration access. Modifying bucket policies is an attractive adversary tradecraft because it does not require long-lived credentials and can bypass rotated keys. This simulation teaches how to safely introduce and validate such a backdoor, how to document attack steps, and how to leave the environment clean for repeat testing. 
 
