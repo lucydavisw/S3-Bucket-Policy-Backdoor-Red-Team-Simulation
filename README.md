@@ -1,7 +1,9 @@
 # S3-Bucket-Policy-Backdoor-Red-Team-Simulation
 
 Author: Lucy Njuguna
+
 Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
+
 Purpose: Demonstrate a realistic red team technique where a malicious actor introduces a cross-account S3 bucket policy backdoor, validate that it is functional, and revert to baseline.
 
 TL;DR
