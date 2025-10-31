@@ -79,7 +79,7 @@ Reversion removed the policy and restored the bucket baseline in the sandbox.
 
 
 
-# Example (Paraphrased) Policy Observed
+# Example Policy Observed
 
 The following is a compact, paraphrased version of the observed allow statement (for documentation; the real JSON is in the discussion log):
 
