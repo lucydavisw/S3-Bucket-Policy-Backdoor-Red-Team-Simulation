@@ -1,10 +1,10 @@
 # S3-Bucket-Policy-Backdoor-Red-Team-Simulation
 
-# Author: Lucy Njuguna
+#Author: Lucy Njuguna
 
-# Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
+#Environment: Stratus Red Team sandbox (AWS CLI v2, Ubuntu)
 
-# Purpose: Demonstrate a realistic red team technique where a malicious actor introduces a cross-account S3 bucket policy backdoor, validate that it is functional, and revert to baseline.
+#Purpose: Demonstrate a realistic red team technique where a malicious actor introduces a cross-account S3 bucket policy backdoor, validate that it is functional, and revert to baseline.
 
 # TL;DR
 
@@ -18,7 +18,7 @@ Red teams need repeatable, realistic scenarios that model how attackers gain per
 
 
 # Contents
-# S3-Bucket-Policy-Backdoor/
+#S3-Bucket-Policy-Backdoor/
 ├── README.md
 ├── S3 Bucket Policy Backdoor Discussion Logeport.pdf
 └── screenshots/
@@ -33,7 +33,7 @@ This is a controlled simulation run in a Stratus Red Team sandbox. No production
 
 
 
-# Exercise Overview (Red Team Playbook)
+#Exercise Overview (Red Team Playbook)
 # 1. Recon & Baseline
 
 Establish the bucket baseline and verify policy absence or current policy state before any changes. Example command used in the sandbox:
@@ -48,10 +48,10 @@ In the simulation the command returned NoSuchBucketPolicy, confirming a clean ba
 
 Use the Red Team harness to apply a backdoor-style bucket policy that allows an external AWS principal cross-account read/list access:
 
-# stratus detonate aws.exfiltration.s3-backdoor-bucket-policy
+#stratus detonate aws.exfiltration.s3-backdoor-bucket-policy
 
 
-# Verification returned a policy with Allow for s3:GetObject, s3:ListBucket, and s3:GetBucketLocation against the bucket ARNs. 
+#Verification returned a policy with Allow for s3:GetObject, s3:ListBucket, and s3:GetBucketLocation against the bucket ARNs. 
 
 
 # 3. Functional Probe (Validate Access)
